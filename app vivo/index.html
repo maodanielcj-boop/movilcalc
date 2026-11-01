@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<link rel="manifest" href="manifest.json">
+<title>Vivo Ventas · Objetivos e incentivos</title>
+<style>
+/* MODO OSCURO FORZADO */
+:root {
+  --bg: #0f1115;
+  --card: #181b21;
+  --tx: #eceef2;
+  --mut: #98a0ab;
+  --ac: #6b8cff;
+  --ok: #3ecf82;
+  --wa: #f0a53a;
+  --bad: #f0706e;
+  --bd: #272b33;
+  color-scheme: dark;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:16px 14px 40px}
+h1{font-size:20px;margin:4px 0 2px}h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:0 0 10px}
+.sub{color:var(--mut);font-size:13px;margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:block;font-size:12px;color:var(--mut);margin-bottom:3px}
+input,select{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:8px 10px;min-width:0}
+input:focus,select:focus{outline:2px solid var(--ac);outline-offset:-1px}
+.pb{margin-bottom:12px}.pl{display:flex;justify-content:space-between;gap:8px;font-size:14px}.pl span{color:var(--mut);font-size:13px;text-align:right}
+.tr{height:9px;background:var(--bg);border-radius:9px;overflow:hidden;margin:5px 0 3px;border:1px solid var(--bd)}
+.tr i{display:block;height:100%;background:var(--bad);border-radius:9px;transition:width .25s}.tr i.m{background:var(--wa)}.tr i.o{background:var(--ok)}
+small{color:var(--mut);font-size:12px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--bd);font-size:14px}.row:last-child{border:0}
+.row b{font-variant-numeric:tabular-nums}
+.tot{font-size:22px;font-weight:700;color:var(--ok);display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;padding-top:10px;border-top:2px solid var(--bd)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:4px}
+.tabs button{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:20px;padding:7px 13px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
+.tabs button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.it{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd)}.it:last-child{border:0}
+.nm{font-weight:600;font-size:14px}.dt{color:var(--mut);font-size:12px}.ln{color:var(--ok);font-size:12px;font-weight:600}
+.st{display:flex;align-items:center;gap:4px;flex:none}
+.st button{width:34px;height:34px;border-radius:9px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:18px;cursor:pointer}
+.st input{width:52px;text-align:center;padding:7px 2px}
+.ed{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:6px;margin-top:6px;align-items:end}.ed input{padding:6px}
+.x{border:0;background:none;color:var(--bad);font-size:18px;cursor:pointer;padding:4px 8px}
+.btn{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;padding:8px 12px;font:inherit;font-size:14px;cursor:pointer;flex:1}
+.btn.p{background:var(--ac);border-color:var(--ac);color:#fff}.btn.d{color:var(--bad)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.add{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:6px;margin-top:10px}
+@media(max-width:520px){.add{grid-template-columns:1fr 1fr}.add input:first-child{grid-column:1/3}}
+.ck{display:flex;align-items:center;gap:8px;font-size:14px;margin-top:10px;color:var(--tx)}.ck input{width:auto}
+.note{font-size:12px;color:var(--mut)}.note li{margin-bottom:4px}
+.stock-badge{background:var(--wa);color:#fff;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+<main>
+<h1>Ventas e Inventario</h1>
+<p class="sub">Política de Incentivos · Promotor Estrella · Control de Stock</p>
+
+<div class="card">
+<h2>Objetivos del mes</h2>
+<div class="g2">
+<div><label for="oU">Objetivo en uds.</label><input id="oU" type="number" inputmode="decimal" min="0" placeholder="Ej. 110"></div>
+<div><label for="oR">Objetivo en fact. (€)</label><input id="oR" type="number" inputmode="decimal" min="0" placeholder="Ej. 25000"></div>
+</div>
+<div style="margin-top:10px"><label for="mode">El cumplimiento se mide en…</label>
+<select id="mode"><option value="max">El mejor de ambos</option><option value="u">Solo unidades</option><option value="r">Solo facturación</option></select></div>
+</div>
+
+<div class="card" id="res"></div>
+
+<div class="card" id="star-card">
+<h2>Promotor Estrella</h2>
+<div class="g2">
+<div><label for="base">Puntos al inicio</label><input id="base" type="number" inputmode="numeric" min="0"></div>
+<div><label>&nbsp;</label><div class="ck" style="margin:0;padding-top:8px"><input id="att" type="checkbox"><span>Asistencia ≥ 75 %</span></div></div>
+</div>
+<div id="star" style="margin-top:10px"></div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div class="card" id="list"></div>
+<div class="bar">
+<button class="btn" id="edit"></button>
+<button class="btn p" id="exp">Compartir Resumen</button>
+<button class="btn d" id="reset">Reiniciar mes</button>
+</div>
+</main>
+
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{ navigator.serviceWorker.register('./sw.js').catch(()=>{}); });
+}
+
+const BASE=[
+['x500p','X500 PRO','X',1399,30,12],['x500m','X500 PRO MAX','X',1699,40,15],['xf','X Fold','X',2199,50,20],
+['x3u','X300 Ultra (2399 €)','X',2399,40,20],['x3u2','X300 Ultra (2898 €)','X',2898,40,20],['x3p','X300 Pro','X',1449,30,12],
+['x3','X300','X',1099,15,10],['x3f5','X300FE 512GB','X',1199,20,12],['x3f2','X300FE 256GB','X',899,16,12],
+['x2p','X200 Pro','X',1299,20,9],['x2f','X200FE','X',849,12,7],
+['v70','V70','V',699,10,7],['v7f5','V70FE 512GB','V',499,7,6],['v7f2','V70FE 256GB','V',449,6,5],
+['v7l2','V70Lite 256GB','V',399,5,4],['v7l1','V70Lite 128GB','V',349,3,3],['v6l5','V60Lite 512G','V',399,3,3],
+['v6lb','V60Lite Bundle','V',329,2,2],['v50','V50','V',599,6,5],['v5l5','V50Lite 512G 5G','V',399,3,3],
+['v5l2','V50Lite 256G 5G','V',329,2,2],['v5l4','V50Lite 256G 4G','V',259,1.5,2],
+['y315','Y31 512GB','Y',329,3,3],['y312','Y31 256GB','Y',299,2,2],['y215','Y21 256GB 5G','Y',249,2,2],
+['y211','Y21 128GB 5G','Y',249,2,2],['y2d2','Y21D 256GB 4G','Y',229,2,2],['y2d1','Y21D 128GB 4G','Y',189,1.5,1],
+['y19b','Y19s 256G','Y',189,1,1],['y19a','Y19s 128G','Y',159,1,1],
+['w2','Watch GT2','W',149,3,3],
+['tws','TWS 3e','I',59,1.5,0,1],['bp','Buds Pro','I',69,1.5,0,1],['bc','Buds Clip','I',179,3,0],
+['bu','Buds Ultra','I',199,3,0],['hp','Headphone','I',169,3,0],['c90','Charger 90W','I',44.99,1,0],['c44','Charger 44W','I',29,.5,0]
+];
+const LV=[[3200,5,600],[2000,4,300],[1000,3,100],[500,2,50],[0,1,0]];
+const TABS=[['T','Ventas'],['X','X'],['V','V'],['Y','Y'],['W','Watch'],['C','Campaña'],['I','IoT'],['ST','📦 Stock'],['CAL','🧮 Reparto']];
+const K='vivo-ventas-v2';
+let S={qty:{},stock:{},ov:{},custom:[],hide:{},objU:'',objR:'',mode:'max',base:3212,att:true,cs:'all',tab:'T'},edit=false,armed=false;
+try{
+  const oldS = JSON.parse(localStorage.getItem('vivo-ventas-v1') || '{}');
+  const currS = JSON.parse(localStorage.getItem(K) || '{}');
+  Object.assign(S, oldS, currS);
+}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s);
+const num=v=>{const n=parseFloat(String(v).replace(',','.'));return isNaN(n)?0:n};
+const E=new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:2});
+const eur=n=>E.format(n),nf=n=>n.toLocaleString('es-ES',{maximumFractionDigits:1}),pc=n=>(n*100).toLocaleString('es-ES',{maximumFractionDigits:1})+' %';
+const items=()=>BASE.concat(S.custom).filter(r=>!S.hide[r[0]]).map(r=>{const o=S.ov[r[0]]||{};return{id:r[0],name:r[1],g:r[2],price:o.price??r[3],inc:o.inc??r[4],pts:o.pts??r[5],tws:r[6]}});
+
+function calc(){
+ const c={u:0,r:0,gross:0,pts:0,w:0,iU:0,iR:0,tws:0,iot:0,stock:0},its=items();
+ its.forEach(i=>{
+  const s=S.stock[i.id]||0; if(s) c.stock+=s;
+  const q=S.qty[i.id]||0; if(!q)return;
+  if(i.g==='I'){c.iU+=q;c.iR+=q*i.price;if(i.tws)c.tws+=q;return}
+  c.u+=q;c.r+=q*i.price;c.gross+=q*i.inc;c.pts+=q*i.pts;if(i.id==='w2')c.w+=q});
+ its.forEach(i=>{const q=S.qty[i.id]||0;if(i.g==='I'&&q)c.iot+=q*(i.tws&&c.tws>=10?2.5:i.inc)});
+ const oU=num(S.objU),oR=num(S.objR);
+ c.oU=oU;c.oR=oR;
+ c.hasObj = oU>0 || oR>0; 
+ c.pU=oU?c.u/oU:0;c.pR=oR?c.r/oR:0;
+ c.p=c.hasObj ? (S.mode==='u'?c.pU:S.mode==='r'?c.pR:Math.max(c.pU,c.pR)) : 1;
+ c.f=c.p>=1?1:c.p>=.9?.6:0;
+ c.mod=c.gross*c.f;
+ c.cr=c.p>=1.3?2:c.p>=1.2?1.5:c.p>=1.1?1:0;
+ c.cu=S.cs==='w'?c.w:S.cs==='over'?Math.max(0,c.u-c.oU):c.u;
+ c.camp=c.cr*c.cu;
+ c.tot=num(S.base)+c.pts;
+ let li=LV.findIndex(l=>c.tot>=l[0]);c.li=li;c.star=S.att?LV[li][2]:0;
+ c.total=c.mod+c.camp+c.iot+c.star;
+ return c}
+
+const cls=p=>p>=1?'o':p>=.9?'m':'';
+function bar(l,p,a,o,f){
+ if(!o)return`<div class="pb"><div class="pl"><b>${l}</b><span>${f(a)}</span></div></div>`;
+ return`<div class="pb"><div class="pl"><b>${l}</b><span>${f(a)} / ${f(o)} · ${pc(p)}</span></div><div class="tr"><i class="${cls(p)}" style="width:${Math.min(100,p*100)}%"></i></div><small>${a>=o?'Superado en '+f(a-o):'Faltan '+f(o-a)}</small></div>`}
+
+function renderRes(){
+ const c=calc();
+ $('#star-card').style.display = (S.tab === 'ST' || S.tab === 'CAL') ? 'none' : 'block';
+ if(S.tab === 'ST'){
+   $('#res').innerHTML = `<h2>Gestión de Inventario</h2><div class="tot" style="border:0;padding:0;margin:0"><span>Total equipos en tienda</span><span>${c.stock} uds</span></div>`;
+   return;
+ }
+ if(S.tab === 'CAL'){
+   $('#res').innerHTML = `<h2>Panel de Reparto</h2><small>Estimación de incentivos para los promotores basada en las jornadas contratadas.</small>`;
+   return;
+ }
+ let h='<h2>Progreso</h2>'+bar('Unidades',c.pU,c.u,c.oU,nf)+bar('Facturación',c.pR,c.r,c.oR,eur);
+ 
+ if(c.hasObj){
+  h+=`<small>Cumplimiento aplicado: <b>${pc(c.p)}</b> → ${c.f===1?'100 %':c.f?'60 %':'0 %'} del incentivo.</small>`;
+ } else {
+  h+=`<small style="color:var(--wa)">⚠️ No has introducido objetivos. Mostrando el incentivo base al 100 % para pruebas.</small>`;
+ }
+ 
+ h+=`<div style="margin-top:12px"><div class="row"><span>Incentivo por modelo</span><b>${eur(c.mod)}</b></div>
+ <div class="row"><span>Campaña invierno</span><b>${eur(c.camp)}</b></div>
+ <div class="row"><span>IoT</span><b>${eur(c.iot)}</b></div>
+ <div class="row"><span>Promotor Estrella</span><b>${eur(c.star)}</b></div>
+ <div class="tot"><span>Total estimado</span><span>${eur(c.total)}</span></div></div>`;
+ $('#res').innerHTML=h;
+ const nx=c.li>0?LV[c.li-1]:null;
+ $('#star').innerHTML=`<div class="row"><span>Puntos este mes</span><b>${nf(c.pts)}</b></div><div class="row"><span>Total de puntos</span><b>${nf(c.tot)}</b></div><div class="row"><span>Nivel · incentivo</span><b>${LV[c.li][1]}★ · ${eur(LV[c.li][2])}</b></div>`;}
+
+function sub(i){const q=S.qty[i.id]||0;if(!q)return'';
+ const c=calc(),rate=i.g==='I'?(i.tws&&c.tws>=10?2.5:i.inc):i.inc;
+ return`${eur(q*i.price)} · ${eur(q*rate)} incentivo bruto`}
+
+function renderCalc(){
+ const c=calc();
+ const pool = c.mod + c.camp + c.iot;
+ const mao = pool * (2/3); 
+ const ivan = pool * (1/3); 
+ 
+ let h = `<h2>Reparto a Tienda</h2>
+ <small>Proporción por horas: Mao (40h / 66,66%) e Iván (20h / 33,33%).<br><i>*El Promotor Estrella es individual y no entra en este cálculo.</i></small>
+ <div class="row" style="margin-top:14px"><span>Incentivo modelos</span><b>${eur(c.mod)}</b></div>
+ <div class="row"><span>Campaña invierno</span><b>${eur(c.camp)}</b></div>
+ <div class="row"><span>Incentivo IoT</span><b>${eur(c.iot)}</b></div>
+ <div class="row" style="border-bottom:2px solid var(--bd); padding-bottom:10px"><span><b>Fondo común a repartir</b></span><b>${eur(pool)}</b></div>
+ 
+ <div class="tot" style="border:0; padding-top:14px; align-items:center;">
+   <span>Mao <span style="font-size:14px; font-weight:normal; color:var(--mut)">(40h)</span></span>
+   <span style="color:var(--ac)">${eur(mao)}</span>
+ </div>
+ <div class="tot" style="border:0; padding-top:8px; margin-top:0; align-items:center;">
+   <span>Iván <span style="font-size:14px; font-weight:normal; color:var(--mut)">(20h)</span></span>
+   <span style="color:var(--ac)">${eur(ivan)}</span>
+ </div>`;
+ 
+ $('#list').innerHTML = h;
+}
+
+function renderList(){
+ if(S.tab==='C'){renderCamp();return}
+ if(S.tab==='CAL'){renderCalc();return}
+ 
+ const isSt = S.tab === 'ST';
+ const its=items().filter(i=>{
+   if(isSt) return true;
+   if(S.tab==='T') return i.g!=='I';
+   return i.g===S.tab;
+ });
+ 
+ let h='';
+ if(S.tab==='I'){const c=calc();h+=`<div class="row"><span>IoT vendido</span><b>${c.iU} uds · ${eur(c.iR)}</b></div><div class="row"><span>Incentivo IoT</span><b>${eur(c.iot)}</b></div>`}
+ if(isSt) h+= '<small style="display:block;margin-bottom:10px">Registra las existencias físicas para facilitar el conteo.</small>';
+
+ its.forEach(i=>{
+  const rate=i.tws&&calc().tws>=10?2.5:i.inc;
+  const stk = S.stock[i.id] || 0;
+  h+=`<div class="it"><div style="min-width:0;flex:1"><div class="nm">${i.name} ${stk && !isSt ? `<span class="stock-badge">Stock: ${stk}</span>` : ''}</div>
+  ${edit&&!isSt?`<div class="ed"><div><label>PVP €</label><input data-f="price" data-id="${i.id}" type="number" step="any" value="${i.price}"></div><div><label>Incent. €</label><input data-f="inc" data-id="${i.id}" type="number" step="any" value="${i.inc}"></div><div><label>Puntos</label><input data-f="pts" data-id="${i.id}" type="number" step="any" value="${i.pts}"></div><button class="x" data-del="${i.id}" title="Quitar">✕</button></div>`
+  :(!isSt ? `<div class="dt">${eur(i.price)} · ${eur(rate)}/ud</div><div class="ln" id="s-${i.id}">${sub(i)}</div>` : `<div class="dt">${i.g === 'I' ? 'IoT' : 'Móvil / Watch'}</div>`)}</div>
+  ${edit&&!isSt?'':`<div class="st"><button data-${isSt?'sm':'m'}="${i.id}">−</button><input type="number" inputmode="numeric" min="0" data-${isSt?'sq':'q'}="${i.id}" value="${isSt ? (S.stock[i.id]||'') : (S.qty[i.id]||'')}" placeholder="0"><button data-${isSt?'sp':'p'}="${i.id}">+</button></div>`}</div>`});
+ 
+ if(edit&&!isSt){h+=`<div class="add"><input id="aN" placeholder="Nuevo modelo"><input id="aP" type="number" step="any" placeholder="PVP €"><input id="aI" type="number" step="any" placeholder="Incent. €"><input id="aT" type="number" step="any" placeholder="Puntos"><select id="aG"><option value="X">X</option><option value="V">V</option><option value="Y">Y</option><option value="W">Watch</option><option value="I">IoT</option></select></div>
+ <div class="bar"><button class="btn p" id="addB">Añadir modelo</button>${Object.keys(S.hide).length?'<button class="btn" id="rest">Restaurar quitados</button>':''}</div>`}
+ $('#list').innerHTML=h}
+
+function renderCamp(){
+ const c=calc(), T=[[110,1],[120,1.5],[130,2]], has=c.oU||c.oR;
+ let h=`<h2>Campaña invierno</h2><small>Con un cumplimiento de 110 %, 120 % o 130 % cobras un extra por unidad, además del incentivo por modelo.</small>
+ <div style="margin:10px 0"><label for="cs">El extra se aplica a…</label>
+ <select id="cs"><option value="all">Todas las unidades (móviles + Watch)</option><option value="over">Solo unidades por encima del objetivo</option><option value="w">Solo Watch GT2</option></select></div>`;
+ 
+ h+=T.map(([p,r])=>{
+  const ok=c.p>=p/100, f=[];
+  if(!ok){if(S.mode!=='r'&&c.oU)f.push(Math.max(0,Math.ceil(c.oU*p/100-c.u))+' uds');if(S.mode!=='u'&&c.oR)f.push(eur(Math.max(0,c.oR*p/100-c.r)))}
+  return`<div class="row"><span>${ok?'✅':'⬜'} ${p} % · +${eur(r)}/ud</span><b>${ok?'Conseguido':f.length?'Faltan '+f.join(' o '):'—'}</b></div>`}).join('');
+ 
+ h+=`<div class="row" style="margin-top:8px"><span>Cumplimiento actual</span><b>${has?pc(c.p):'—'}</b></div>
+ <div class="row"><span>Extra actual por unidad</span><b>${eur(c.cr)}</b></div>
+ <div class="row"><span>Unidades con extra</span><b>${c.cu}</b></div>
+ <div class="tot"><span>Extra campaña</span><span>${eur(c.camp)}</span></div>`;
+ 
+ if(!has)h+='<small style="color:var(--wa)">⚠️ Introduce un objetivo real para calcular el extra, ya que requiere superar el 110%.</small>';
+ $('#list').innerHTML=h; $('#cs').value=S.cs||'all';
+}
+
+function renderTabs(){$('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t[0]}" class="${S.tab===t[0]?'on':''}">${t[1]}</button>`).join('');$('#edit').textContent=edit?'Terminar edición':'Editar catálogo'}
+function all(){renderTabs();renderList();renderRes()}
+function setQ(id,v){v=Math.max(0,Math.round(num(v)));if(v)S.qty[id]=v;else delete S.qty[id];save()}
+function setS(id,v){v=Math.max(0,Math.round(num(v)));if(v)S.stock[id]=v;else delete S.stock[id];save()}
+function refresh(id){const i=items().find(x=>x.id===id),e=$('#s-'+id);if(e&&i)e.textContent=sub(i);renderRes();if((S.tab==='I'||S.tab==='ST')&&i&&i.tws)renderList()}
+
+document.addEventListener('click',e=>{
+ const t=e.target.closest('button');if(!t)return;const d=t.dataset;
+ if(d.t){S.tab=d.t;save();all()}
+ else if(d.p||d.m||d.sp||d.sm){
+  const isS = !!(d.sp||d.sm); const id = d.p||d.m||d.sp||d.sm;
+  if(isS) setS(id,(S.stock[id]||0)+(d.sp?1:-1)); else setQ(id,(S.qty[id]||0)+(d.p?1:-1));
+  const inp=document.querySelector(`[data-${isS?'sq':'q'}="${id}"]`);
+  if(inp) inp.value=isS?(S.stock[id]||''):(S.qty[id]||'');
+  refresh(id);
+ }
+ else if(d.del){S.hide[d.del]=1;save();all()}
+ else if(t.id==='edit'){edit=!edit;all()}
+ else if(t.id==='exp'){
+  const c=calc();
+  const txt = `📊 Resumen Ventas vivo
+
+Unidades: ${c.u} / ${c.oU||0}
+Facturación: ${eur(c.r)} / ${eur(c.oR||0)}
+Cumplimiento: ${pc(c.p)}
+
+Incentivo: ${eur(c.mod)}
+Campaña: ${eur(c.camp)}
+IoT: ${eur(c.iot)}
+Estrella: ${eur(c.star)}
+
+💰 TOTAL ESTIMADO: ${eur(c.total)}
+📦 Stock en tienda: ${c.stock} uds.`;
+  if(navigator.share){navigator.share({title:'Ventas vivo',text:txt}).catch(()=>{});}
+  else{navigator.clipboard.writeText(txt);t.textContent='¡Copiado!';setTimeout(()=>t.textContent='Compartir Resumen',2000);}
+ }
+ else if(t.id==='reset'){if(!armed){armed=true;t.textContent='¿Seguro?';setTimeout(()=>{armed=false;t.textContent='Reiniciar mes'},3000)}else{S.qty={};armed=false;t.textContent='Reiniciar mes';save();all()}}
+ else if(t.id==='addB'){
+  const n=$('#aN').value.trim();if(!n)return;
+  S.custom.push(['c'+Date.now(),n,$('#aG').value,num($('#aP').value),num($('#aI').value),num($('#aT').value)]);
+  save();all()
+ }
+ else if(t.id==='rest'){S.hide={};save();all()}
+});
+
+document.addEventListener('input',e=>{
+ const t=e.target;
+ if(t.dataset.q){setQ(t.dataset.q,t.value);refresh(t.dataset.q)}
+ else if(t.dataset.sq){setS(t.dataset.sq,t.value);refresh(t.dataset.sq)}
+ else if(t.dataset.f){(S.ov[t.dataset.id]=S.ov[t.dataset.id]||{})[t.dataset.f]=num(t.value);save();renderRes()}
+ else if(t.id==='oU'){S.objU=t.value;save();renderRes();if(S.tab==='C'||S.tab==='CAL')renderList();}
+ else if(t.id==='oR'){S.objR=t.value;save();renderRes();if(S.tab==='C'||S.tab==='CAL')renderList();}
+ else if(['mode','base','att','cs'].includes(t.id)){
+  if(t.type==='checkbox') S[t.id]=t.checked; else S[t.id]=t.value; 
+  save(); renderRes(); 
+  if(S.tab==='C' || S.tab==='CAL' || t.id==='cs') renderList();
+ }
+});
+
+$('#oU').value=S.objU;$('#oR').value=S.objR;$('#mode').value=S.mode;$('#base').value=S.base;$('#att').checked=S.att;
+all();
+</script>
+</body>
+</html>
